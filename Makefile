@@ -1,2 +1,33 @@
-all:
-	g++ *.cpp -lGL -lGLU -lglut -std=c++11 -o bomberman
+
+SOURCE_DIR=src
+PROGRAM_NAME=bomberman.exec
+
+SOURCES=$(wildcard $(SOURCE_DIR)/*.cpp)
+HEADERS=$(wildcard $(SOURCE_DIR)/*.h)
+OBJECTS=$(SOURCES:.cpp=.o)
+
+COMPILER=g++
+COMPILER_FLAGS=-std=c++11
+LIBRARIES= -lGL -lGLU -lglut
+LINKER=g++
+
+
+.PHONY:all  clean
+
+
+
+all: $(OBJECTS)
+	$(LINKER) $^  $(LIBRARIES) -o $(PROGRAM_NAME)
+
+		
+
+#compile
+%.o: %.cpp $(HEADERS)
+	$(COMPILER) -c $(COMPILER_FLAGS) $<  -o $@ $(LIBRARIES)
+	
+ 
+clean:
+	rm $(PROGRAM_NAME)
+	rm $(OBJECTS)
+	
+
