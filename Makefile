@@ -1,6 +1,6 @@
 
 SOURCE_DIR=src
-PROGRAM_NAME=bomberman.exec
+PROGRAM_NAME=bomberman
 
 SOURCES=$(wildcard $(SOURCE_DIR)/*.cpp)
 HEADERS=$(wildcard $(SOURCE_DIR)/*.h)
